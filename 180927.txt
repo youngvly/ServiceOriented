@@ -1,0 +1,18 @@
+URI (Uniform Resource Identifier)
+	- URL (.. Locator)
+	- URN (.. Name) : 요즘 사용안됨
+		-> URL과 URI만 사용하다보니 혼용해서 사용됨.
+page16 , 그림 중요
+
+-HTTP status codes
+	- 200대 , 404, 409는 알아둬야함
+	- 301은 다루어주지않으면 별다른거없음/? / 바뀐 URL알려주기만
+	- 500 클라이언트는 잘못없음. backend쪽 오류 
+
+- http://abc.com?a=30&b=10 -> ?뒤에ㅇ있는 내용이 Query String = 파라미터
+
+텀프로젝트
+- 필요하면 RDS사용
+- GET방식만 사용해도될듯 (PUT.POST.DELETE)
+- 제공하는 API는 인증 OAUTH안넣어도됨.
+- 보고서는 아래한글, 워드만들지 말고 발표자료만 만들면됨 (PPT)

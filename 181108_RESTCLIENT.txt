@@ -1,0 +1,14 @@
+domain폴더에 Temperature넣고
+main에 함수넣고
+App - main 함수 옆에있는 run버튼 누르면 객체 찍히는거 확인가능
+
+- restTemplate.getForEntity (get방식) 인자 : 받아올 url, 받아올 class형식
+   ResponseEntity타입에 json이나 xml을 받아옴 -> getbody를 통해서 원하는 class객체로 받아옴.
+   
+- restTemplate.postForLocation (post방식) : url,넣을객체인스턴스,class형식
+
+
+<<<API받아오기>>>
+
+Api주소 접속해서 json파일 복사, link사이트에있는 json  > class 사이트에서 domain클래스 제작, 
+Client소스에서 get메소드 소스코드 복사,수정. (Url, domainclass만 수정하면됨)

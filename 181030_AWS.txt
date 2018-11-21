@@ -1,0 +1,48 @@
+RDS 인스턴스 만들기
+- 서울 > id 비밀번호만 설정해주고 생성 (test / test1234)
+- public access 설정을 예 로 해야지 workbench에서 접속가능
+- 스냅샷 : DB백업해주는거 > 돈들어감
+  >> 엔드포인트 복사해서 Workbench에서 새로만들고 hostname에 endpoint넣기
+- 연습 : wsc 쿼리문 복사해서 적용해보기
+
+Elastic Banstalk
+  >> 어플리케이션이름, 플랫폼(Tomcat)설정
+  >> EC2도 자동으로 만들어짐
+  >> EC2부터 시작하면 자바, 서버 등등 다 수동으로 깔았어야함.
+
+Intellij에서 prod config >  url에 localhost를 RDS endpoint / username / password 바꾸기
+>> 로컬호스트로하면 내컴 꺼지면 디비도 같이꺼져서 사이트사용불가, RDS 쓰는게 좋을듯
+edit configuration에서 Maven 추가
+- Command line에 clean package
+- Profiles에 prod > 실행
+- target폴더에 있는 war파일을 Elastic Beanstalk에 업로드 하면 끝
+  >> 로드밸런서를 통해서 트래픽이 높아지면 늘릴 수 있음.(유료)
+
+URL http://testappelasticbeanstalk-env.hhm2ctb7ye.ap-northeast-2.elasticbeanstalk.com/
+접속시 배포한 파일 확인 가능
+
+DB연결에서는 코드에있는 USERS > wsc.users 같이 대소문자 구분해야함.
+
+EC2 접속해서 직접 수정하는 방법 > SSH 인 22번 21번 포트 열려야함.
+
+Route53
+   >> 도메인사서 연결하는거, 월 1000원정도함.
+   >> whois.com 같은데서 도메인살수있음.
+   >> 도메인 사면 nameserver을 물어봄 > 아마존 Route53 만들어서 Value에있는 4개의 주소를 하나씩 넣어주면됨 ( 전세계에있기때문에 4개)
+   >> 늦으면 이틀, 빠르면 한시간내로 다 퍼져서 사용가능.
+   >> Route53 쓰는 이유는? IP주소 안적어도 Beanstalk 주소 적을 수 있음 > IP주소 바껴도 상관없음.
+   >> A : publicIP ( Alias Target으로 Beanstalk주소 적을수잇음 / s3꺼도 가져올 수 있음)
+   >> NS : nameServer
+   >> SOA : 자동으로들어감.
+     >> name.com으로 하면 들어가도 www.name.com 하면 안들어가짐  > A타입으로 www.name.com 레코드하나 만들어주면 접속가능.
+S3
+S3는 넣고빼는비용만 받고 저장할때는 무료.
+- 단순 HTML ,정적 사이트면 그냥 S3에 넣어서 Route53에 연결해서 사용가능
+- 폴더만들어봐짜 필요없음 . 계단식이아니라 통째로 한 폴더에 들어가있는 모양 > 파일이 1000개 10,000개 되면 찾기힘들어짐.
+- 스프링 프로젝트에서 s3로 파일 업로드 가능.
+
+
+시험 나올! 개방폐쇠원칙 & Maven 주기 & 싱글톤? 
+
+우리학교는 22번포트 안열림 > 팀뷰어로 다른 로컬컴연결해서 포트열어서씀....
+IP지정해서 열어놔도 AWS는 탄력적IP로 계속 바껴서 무의미

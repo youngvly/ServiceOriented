@@ -1,0 +1,32 @@
+동적SQL ( 쿼리문 일일이 안만들어줘도된다)
+
+UserController : RequestMapping , method = Get > model.addAttribute("users",userMapper.findByProvider(searchable));
+-> UserMapper : @SelectProvider(type = UserSqlProvider.class,method ="findAllByProvider") > List<User> findByProvider(Searchable searchable);
+-> UserSqlProvider : UserSqlProvider.findAllByProvider(Searchable searchable){query}
+
+AOP
+모든 함수에 try catch 할수없으므로, 에러났을때 실행되도록 
+Aspect Oriented Programming : 부가기능 분리!
+AOP용어 몰라도됨
+
+@Aspect{
+	@Before (포인트컷=시점)
+	어드바이스 = 실행될함수
+
+	@After(포인트컷 = 시점)
+	어드바이스 = 실행될함수
+
+	@AfterReturning
+	포인트컷이 반환한값 활용
+	
+	@Around
+	실행전
+	joinPoint.proceed()
+	실행후
+}
+
+11월 16일까지 텀프 사전보고서 ppt
+주제, 수집데이터, 제공데이터
+
+bookmapper를 새로만들어서 usercontoroller에서 bookmapper.insert를 먼저부르고, getbookId를 하면 selectKey에서 반환하는 id값을 받아올 수 있을것.
+user Class에는 private bookid따로 있어야할듯

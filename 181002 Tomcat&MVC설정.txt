@@ -1,0 +1,34 @@
+Close Project > Import 'Project > Set Maven 옵션 선택 > 다음다음다음해서 스프링 다운받기
+
+
+Add Configuration > + > Tomcat - local > Application-Server에 Tomcat 경로설정 / Deployment > war exploded > VM Option - Update clases and resources
+
+(exploded랑 VMoption때문에 .jsp변경즉시 적용됨 (java는 변경해도 반영잘안됨 - 프로젝트 중지 후 재실행) 
+	- 개발할때만 exploded, 실제 배포할때는 그냥 war)
+
+
+* deploy한다 = 배포한다 > 서버에 올라옴.
+	deploy방법 Configuration 에서 war exploded 삭제하고 war넣고 실행
+	- > target > projectname -001 > wsc-001.war 파일 복사 > tomcat폴더에 webapps에 붙여넣기
+
+*우측바에 Maven Project -> Lifecycle > clean 하면 target폴더 사라짐 (덮어씌울때 오류방지)
+					>Package 하면 target폴더 다시 생김
+
+메인소스는 src > main > webapp > WEB_INF > views > url에 실제로 보여지는부분 .jsp
+
+MVC (Web - Backend 연결)
+
+-main > java> controller > HomeController.java (자료가공)
+-> webapp >>>> views> .jsp (보여지는부분) 
+-> resources > services.xml > <bean> <property "prefix">에 정해져있기때문에 연결되는것 아니면 return에 직접 value값까지 적어줘야함.
+
+- HomeController.java에 class안에  @RequestMapping("/다음url이름") url연결
+
+
+---------------
+IntelliJ없이 구동
+환경변수에서 JAVA_HOME : C:\Program Files\Java\jdk1.8.0_101
+PATH에 : %JAVA_HOME%\bin
+cmd창에서 tomcat > bin폴더 들어가서 startup.bat 입력하면 localhost:8080으로 접속가능
+그냥 내 로컬아이피로 다른컴퓨터에서도 접속가능.
+종료할때는 shutdown.bat

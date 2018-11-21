@@ -1,0 +1,17 @@
+
+실습파일 pom.xml에 mysql Connector 정보가 같아야함
+-> 구글에 mysql Connector (버전) maven 적고 검색해서 복붙.
+-> mysql 5.7.23은 없어서 5.1.23으로 대체가능
+
+실습실컴 mysql : root 1234
+
+Mysql Workbench에서 resources에 wsc.sql 복붙 , 위에 번개모양(execute) > 왼쪽 Schemas에서 refresh
+번개모양 안뜨면 서버꺼진거 > bin- mysqld.exe 실행하고 워크밴치에서 startServer
+
+mysql 버전이 5.7이어야 root에 바로접속가능, mysql8은 안됨.
+
+*Spring에서 #{}이면 값
+* return "redirect:/user/list";
+	-> db에 insert했을경우 > redirect는 컨트롤러의 맨위에있는 RequestMapping부터 다시 찾아들어감. > list함수로 전달 > list.jsp로 전달.
+				> redirect는 바로 jsp가 아닌 함수로 먼저 찾아들어가게함.
+*Getter Setter 자동생성단축키 : Alt + insert

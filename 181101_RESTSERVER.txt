@@ -1,0 +1,23 @@
+resources > common > services.xml
+- bean : 객체생성이랑 같다고 생각하면됨. id = 인스턴스이름, class= 클래스이름 /
+    >> singletone 이어야함. (인스턴스에 new가 한번만 할당됨)
+    >> property는 변수초기화라고 생각. 
+    >> h2WebServer bean 에 적혀있는 port번호로 접속하면 h2workbench같은거 사용가능
+
+resources > common > initH2.sql
+- Embeded DB는 서버가 종료되면 사라지고 서버가 실행되면 다시생김.  (MySQL보다 가벼운 DB)
+    >> SCHEMA = DATABASE
+    >> TRUNCATE : 테이블 구조는 남겨두되, 레코드는 없애라.
+    >> SET REFERENTIAL_INTEGRITY False: (레코드 없앨때 사용하게)Foreign key를 따지는 일을 잠깐 꺼라.
+
+pom.xml
+- Jackson 라이브러리(dependency) = 객체<->XML or JSON
+- dependency 쓰는건 구글에 {groupid} maven 치면 버전별로 나옴.
+
+{Context Root} == localhost:8080 
+
+- 인텔리제이 단축키 함수에 커서올리고 Ctrl+B 하면 해당위치로 이동
+    / (Ctrl+) alt + <- -> : 이전탭 다음탭으로이동
+
+-  new ResponseEntity<Temperature>(HttpStatus.NOT_FOUND) : 생성자 인자에는 HTTp응답코드넣어줘야함.
+-  produces = "application/json" , "application/xml" 타입지정

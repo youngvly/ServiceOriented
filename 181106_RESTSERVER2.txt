@@ -1,0 +1,38 @@
+CRUD
+ - Create : POST
+ - Request : GET ? 
+ - UPDATE : PUT
+ - Delete : DELETE
+
+POST 방식
+Post방식 자체로 그냥 사이트이용해서 내용 던져주기란 불가능? 
+@RequestBody Temperature temperature 객체를 요청함
+    클라이언트에서 객체를 던져줘야함 
+    1. 객체를 만들어서 Serialization 해서 던져주는 클라이언트 프로그램을 만들어주던지
+    2. Serialization한 (JSON)파일을 프로그램(포스트맨)을 통해 보내주던지
+headers.setLocation() : 응답에 location : xxx 한줄이 생김.
+.toURi() : https:// or localhost:8080/ 앞에 자동으로 붙여줌
+
+
+ARC 다운
+POST 실습
+Parameters에 Body에 application/json , Json Visual Editor 넣고 내용입력
+DATE datetime에 보내야하는 값은 타임스탬프, 13자리 숫자
+
+H2 주소(껐다키면 DB날라감) : localhost:8082 / Post해도 내용 안나옴..버그인듯?
+
+<<<<<REST CLIENT>>>>>
+Maven이 기본 뼈대 자동으로 만들어주는 과정
+
+터미널에서 생성
+mvn archetype:generate -DgroupId=koreatech.link -DartifactId=restful_client -Dpackage=koreatech.cse.rest.client -Dversion=1.0
+maven binary파일받아서 bin디렉토리 path에 넣어주고 cmd에 입력
+IntelliJ에서 다시 불러올때 "New -> From Existing File??"로 불러와서 기존 프로젝트 덮기로 불러와야함
+
+
+INTELLIJ에서 생성
+New Project > Maved > Maven~~ quickstart로 만들기 GroupID랑 다 입력
+GroupiID ( 나중에 패키지역할, 실제 속한 그룹이름 쓰면됨 ex koreatech.cse.link)
+오른쪽 창 뜨면 Enable Auto import눌러놓으면 좋음
+
+

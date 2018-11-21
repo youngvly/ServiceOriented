@@ -1,0 +1,10 @@
+bootstrap 사용법
+cdn : 페이지 로드마다 부트스트랩서버에서 최신버전 받아온다.
+	-> 버전관리 필요없다. 붙스서버뻗어버리면 페이지못쓴다
+
+resources 폴더에 theme 다갖다 붙이고
+index.html을 views에서 index.jsp로 바꾼다음
+Controller에 return "index" 함수 하나 만들면 됨.
+
+
+insert 할때 regdate에 now()
