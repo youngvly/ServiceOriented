@@ -1,7 +1,7 @@
 
 *.properties
 
-/resources
-/target
-/common
-/prod
+TermProject/src/main/resources/
+/target/
+/common/
+/prod/
