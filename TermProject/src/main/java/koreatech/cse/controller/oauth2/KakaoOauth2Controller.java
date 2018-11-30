@@ -1,6 +1,7 @@
 package koreatech.cse.controller.oauth2;
 
 import koreatech.cse.service.UserService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.social.oauth2.GrantType;
@@ -19,26 +20,30 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/oauth")
 public class KakaoOauth2Controller {
-    private static String kakao_client_id = "";      //본인 것으로 추가하기
-    private static String kakao_client_secret = "";  //본인 것으로 추가하기
-    private static String kakao_authorization_endpoint = "https://kauth.kakao.com/oauth/authorize";
-    private static String kakao_token_endpoint = "https://kauth.kakao.com/oauth/token";
-    private static String kakao_redirect_uri = "http://localhost:8080/oauth/kakao_callback";
+    @Value("${kakao.client.id}")
+    private String kakao_client_id ;      //본인 것으로 추가하기
+    @Value("${kakao.client.secret}")
+    private String kakao_client_secret;  //본인 것으로 추가하기
+    private String kakao_authorization_endpoint = "https://kauth.kakao.com/oauth/authorize";
+    private String kakao_token_endpoint = "https://kauth.kakao.com/oauth/token";
+    private String kakao_redirect_uri = "http://localhost:8080/oauth/kakao_callback";
 
-    public static String kakao_rest_api_app_key = "";   //본인 것으로 추가하기
+    @Value("${kakao.appkey}")
+    public static String kakao_rest_api_app_key;   //본인 것으로 추가하기
 
     @Inject
     private UserService userService;
 
-    private OAuth2Template kakaoOauthTemplate = new OAuth2Template(
-            kakao_client_id,
-            kakao_client_secret,
-            kakao_authorization_endpoint,
-            kakao_token_endpoint
-    );
+
 
     @RequestMapping("/kakao_authorization_code")
     public String kakao_authorization_code() {
+        OAuth2Template kakaoOauthTemplate = new OAuth2Template(
+                kakao_client_id,
+                kakao_client_secret,
+                kakao_authorization_endpoint,
+                kakao_token_endpoint
+        );
         OAuth2Parameters parameters = new OAuth2Parameters();
         parameters.setRedirectUri(kakao_redirect_uri);
 
@@ -51,6 +56,12 @@ public class KakaoOauth2Controller {
 
     @RequestMapping("/kakao_callback")
     public String kakao_callback(Model model, HttpServletRequest request, @RequestParam String code) throws Exception {
+        OAuth2Template kakaoOauthTemplate = new OAuth2Template(
+                kakao_client_id,
+                kakao_client_secret,
+                kakao_authorization_endpoint,
+                kakao_token_endpoint
+        );
         System.out.println("Kakao Callback is called!!");
         System.out.println(code);
 

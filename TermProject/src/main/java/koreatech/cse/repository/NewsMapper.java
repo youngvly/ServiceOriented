@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository
 public interface NewsMapper {
-    @Insert("INSERT INTO jobBoard_DB.news (TITLE, DESCRIPTION, NAVERLINK, ORIGINALLINK,PUBDATE) VALUES (#{title}, #{description}, #{link}, #{originallink}, #{pubDate})")
+    @Insert("INSERT INTO jobBoard_DB.news (TITLE, DESCRIPTION, NAVERLINK, ORIGINALLINK,PUBDATE,JOBID) VALUES (#{title}, #{description}, #{link}, #{originallink}, #{pubDate},#{jobid})")
     @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "newsid", before = false, resultType = int.class)
     void insert(NewsItems newsNewsItems);
 
@@ -29,7 +29,6 @@ public interface NewsMapper {
 */
     @SelectProvider(type = NewsSqlProvider.class, method = "findAllByProvider")
     List<NewsItems> findByProvider(NewsSearchable newsSearchable);
-
 
     @Delete("DELETE FROM jobBoard_DB.news WHERE NEWSID = #{newsid}")
     void delete(@Param("newsid") int newsid);

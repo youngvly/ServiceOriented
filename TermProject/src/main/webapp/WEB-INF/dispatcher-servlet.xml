@@ -8,7 +8,13 @@
                         http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
     <!-- not work
-    <context:property-placeholder location="classpath*:naverAPI.properties" />
+    <context:property-placeholder location="classpath*:config.properties" />
+    -->
+    <!--
+    <bean class="koreatech.cse.controller.oauth2.FacebookOauth2Controller">
+        <property name="facebook_client_id" value="${facebook.client.id}"></property>
+        <property name="facebook_client_secret" value="${facebook.client.secret}"></property>
+    </bean>
     -->
 
 </beans>

@@ -1,10 +1,13 @@
 package koreatech.cse.controller;
 
+import koreatech.cse.domain.job.Job;
 import koreatech.cse.domain.news.News;
 import koreatech.cse.domain.news.NewsItems;
 import koreatech.cse.domain.news.NewsSearchable;
 import koreatech.cse.domain.oauth2.kakao.Properties;
+import koreatech.cse.repository.JobMapper;
 import koreatech.cse.repository.NewsMapper;
+import koreatech.cse.service.news.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -31,12 +34,20 @@ public class NaverNewsController {
     private String clientSecret;
     @Inject
     private NewsMapper newsMapper;
+    @Inject
+    private JobMapper jobMapper;
+    @Inject
+    private NewsService newsService;
 
    // @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/getandinsert/{query}")
-    public String getByQuery(@PathVariable  String query){
+    public String getNewsByQuery(@PathVariable  String query){
 
         System.out.println(query);
+        Job job = jobMapper.findByJobName(query);
+        if (job == null) {
+            jobMapper.insert(query);
+        }
 
         RestTemplate restTemplate = new RestTemplate();
         try {
@@ -50,13 +61,15 @@ public class NaverNewsController {
             if (responseEntity.getStatusCode() == HttpStatus.OK) {
                 News news = responseEntity.getBody();
                 //System.out.println(news.getnewsItems().get(0).getDescription());
-
+                //오래된 뉴스 삭제
+                newsService.deleteOldNews(news.getnewsItems(),job.getJobid());
                 for (NewsItems item : news.getnewsItems()) {
                     //동일한 기사가 존재하는지 검색 (중복 삽입 방지)
                     NewsSearchable newsSearchable = new NewsSearchable();
                     newsSearchable.setOriginalLink(item.getOriginallink());
 
                     if (newsMapper.findByProvider(newsSearchable).size() == 0) {
+                        item.setJobid(job.getJobid());
                         newsMapper.insert(item);
                     }
                 }

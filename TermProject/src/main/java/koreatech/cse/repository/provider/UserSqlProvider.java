@@ -9,7 +9,7 @@ public class UserSqlProvider {
         return new SQL() {
             {
                 SELECT("*");
-                FROM("USERS");
+                FROM("wsc.users");
                 if(searchable.getName() != null) {
                     WHERE("NAME = #{name}");
                     if(searchable.getEmail() != null) {
