@@ -9,6 +9,7 @@
         <param-value>
             classpath:services.xml
             classpath:security.xml
+            classpath:timer.xml
         </param-value>
     </context-param>
 
