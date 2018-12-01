@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--https://logging.apache.org/log4j/2.x/manual/migration.html 참고-->
+<Configuration>
+    <properties>
+        <property name="name">app</property>
+        <property name="pattern">%d{yyyy-MM-dd HH:mm:ss SSS} | %-5.5p | %-30.30C::%-30.30M:%-5.5L|msg : %msg%n</property>
+        <!--
+            C : class / c : logger / M : method / F : file / L : 라인번호 / l : 파일명,라인번호
+            ㅡm : 로그문에서 전달된 메시지 / n 줄바꿈 / r 로그처리시간 / t 로깅이벤트가 발생한 스레드명
+        -->
+    </properties>
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <!--176 [main] INFO org.foo.Bar - Located nearest gas station-->
+
+        </Console>
+        <!--<File name="filelogg" fileName="loggggg.log" >
+            <PatternLayout pattern="logger1 : %d  [%t] %-5p %C{2} (%F:%L) - %m%n"/>
+        </File>-->
+<!--        <RollingFile name="rollingfile" fileName="logs/${name}.log"
+                     filePattern="logs/${date:yyyy}/${date:MM}/${date:dd}/${name}_%d{yyyyMMddHH}.log">
+            <append>false</append>
+            <PatternLayOut>
+                <pattern>${pattern}</pattern>
+            </PatternLayOut>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+                &lt;!&ndash;<TimeBasedTriggeringPolicy/>&ndash;&gt;
+            </Policies>
+        </RollingFile>-->
+        <RollingFile name="rolling-file" fileName="C:/log/server.log" filePattern="C:/log/server.log.%i.gz">
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10" fileIndex="min"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!--<Logger name="org.apache.logging.log4j.xml" level="info"/>-->
+        <Logger name="koreatech.cse" level="DEBUG">
+            <!--<AppenderRef ref="console"/>-->
+            <AppenderRef ref="rolling-file"/>
+        </Logger>
+        <Root level="debug">
+            <AppenderRef ref="console"/>
+            <!--<AppenderRef ref="rolling-file"/>-->
+        </Root>
+    </Loggers>
+</Configuration>
+

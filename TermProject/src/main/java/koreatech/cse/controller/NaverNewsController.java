@@ -39,8 +39,8 @@ public class NaverNewsController {
     @Inject
     private NewsService newsService;
 
-   // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping("/getandinsert/{query}")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @RequestMapping("/getandinsert/{query}")
     public String getNewsByQuery(@PathVariable  String query){
 
         System.out.println(query);

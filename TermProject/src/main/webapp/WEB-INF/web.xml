@@ -10,6 +10,7 @@
             classpath:services.xml
             classpath:security.xml
             classpath:timer.xml
+            <!--classpath:log4j2.xml-->
         </param-value>
     </context-param>
 

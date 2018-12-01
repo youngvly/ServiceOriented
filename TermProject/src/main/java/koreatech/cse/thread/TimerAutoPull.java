@@ -3,12 +3,11 @@ package koreatech.cse.thread;
 import koreatech.cse.controller.NaverNewsController;
 import koreatech.cse.domain.job.Job;
 import koreatech.cse.repository.JobMapper;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import java.util.List;
+
 
 public class TimerAutoPull implements Runnable {
 
@@ -17,14 +16,19 @@ public class TimerAutoPull implements Runnable {
     private NaverNewsController naverNewsController;
     @Inject
     private JobMapper jobMapper;
+
+    private Logger logger = org.apache.logging.log4j.LogManager.getLogger(LogControl.class);
+
     @Override
     public void run() {
+        //logControl.func();
+        logger.info("DB Updated | " + number++ + " times");
         List<Job> jobList =  jobMapper.findAllJob();
         for(Job job : jobList){
             naverNewsController.getNewsByQuery(job.getName());
         }
 
-        System.out.println("run" + number++);
+//        System.out.println("run" + number++);
     }
 }
 
