@@ -4,6 +4,7 @@ import koreatech.cse.domain.combi.Combi_job_news;
 import koreatech.cse.repository.JobMapper;
 import koreatech.cse.repository.NewsMapper;
 import koreatech.cse.service.Combi.Combine_job_News_Service;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,10 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
+<<<<<<< HEAD
+=======
+// 브랜치 작업중
+>>>>>>> workNet
 @Controller
 @RequestMapping("/jobinfo/api")
 public class MainController {
 
+    @Value("${env.text}")
+    private String envText;
     @Inject
     Combine_job_News_Service combine_job_news_service;
 
