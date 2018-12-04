@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
 
-////ddasgsdgds
-
 @Controller
 @RequestMapping("/jobinfo/api")
 public class MainController {
