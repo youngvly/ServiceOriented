@@ -1,7 +1,5 @@
 .idea
 target
-*.iml
-src/main/resources/dev/*
 
-src/main/resources/prod/*
-*.properties
+src/main/resources/dev/config.properties
+src/main/resources/prod/config.properties
