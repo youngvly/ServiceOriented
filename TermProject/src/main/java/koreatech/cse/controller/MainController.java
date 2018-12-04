@@ -1,6 +1,5 @@
 package koreatech.cse.controller;
 
-import jdk.net.SocketFlow;
 import koreatech.cse.domain.combi.Combi_job_news;
 import koreatech.cse.repository.JobMapper;
 import koreatech.cse.repository.NewsMapper;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
-
 @Controller
 @RequestMapping("/jobinfo/api")
 public class MainController {
