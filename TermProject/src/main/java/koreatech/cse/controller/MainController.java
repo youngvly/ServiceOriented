@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
-
+// 브랜치 작업중
 @Controller
 @RequestMapping("/jobinfo/api")
 public class MainController {
