@@ -1,19 +1,19 @@
 package koreatech.cse.domain.combi;
 
 import koreatech.cse.domain.news.NewsItems;
-import koreatech.cse.domain.worknet.WorkNetItem;
+import koreatech.cse.domain.worknet.WorkNetSearchable;
 
 import java.util.List;
 
 public class Combi_worknet_navernews {
-    private List<WorkNetItem> workNetItemList;
+    private List<WorkNetSearchable> workNetItemList;
     private List<NewsItems> newsItemsList;
 
-    public List<WorkNetItem> getWorkNetItemList() {
+    public List<WorkNetSearchable> getWorkNetItemList() {
         return workNetItemList;
     }
 
-    public void setWorkNetItemList(List<WorkNetItem> workNetItemList) {
+    public void setWorkNetItemList(List<WorkNetSearchable> workNetItemList) {
         this.workNetItemList = workNetItemList;
     }
 

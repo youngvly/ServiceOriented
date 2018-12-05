@@ -18,9 +18,9 @@ public class WorknetSqlProvider {
                         WHERE("TITLE = #{title}");
                     }
                 }
-                else if(searchable.getStartDate() != null) {
+                else if(searchable.getSdate() != null) {
                     WHERE("SDATE = #{startDate}");
-                    if(searchable.getEndDate()!= null){
+                    if(searchable.getEdate()!= null){
                         OR();
                         WHERE ("EDATE = #{endDate}");
                     }

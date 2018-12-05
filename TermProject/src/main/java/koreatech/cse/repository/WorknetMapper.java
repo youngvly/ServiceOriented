@@ -20,7 +20,8 @@ public interface WorknetMapper {
     void insert(WorkNetItem workNetItem);
 
     @SelectProvider(method = "findAllByProvider" , type = WorknetSqlProvider.class)
-    List<WorkNetItem> select(WorkNetSearchable workNetSearchable);
+    List<WorkNetSearchable> select(WorkNetSearchable workNetSearchable);
+    //WorkNetItem DTO와 DB index 불일치, 가져오기불가능 -> WorkNetSearchable로 가져와야함
 
     @Select("SELECT DISTINCT NAME FROM jobBoard_DB.worknet")
     List<Job> selectAllJobName();

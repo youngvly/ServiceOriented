@@ -13,13 +13,15 @@ public class WorkNetSearchable {
     private int jobid;
     private String type;     //type
 
-    private String endDate;           //enddate
+    private String edate;           //enddate
+    private String sdate;           //startdate
 
     private String name;       //name
 
     private String title;  //title
 
-    private String startDate;           //startdate
+    private String logo;
+    private String url;
 
     private String orderParam;
 
@@ -31,12 +33,20 @@ public class WorkNetSearchable {
         this.type = type;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public String getEdate() {
+        return edate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setEdate(String edate) {
+        this.edate = edate;
+    }
+
+    public String getSdate() {
+        return sdate;
+    }
+
+    public void setSdate(String sdate) {
+        this.sdate = sdate;
     }
 
     public String getName() {
@@ -55,12 +65,20 @@ public class WorkNetSearchable {
         this.title = title;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getLogo() {
+        return logo;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getOrderParam() {
@@ -76,10 +94,12 @@ public class WorkNetSearchable {
         return "WorkNetSearchable{" +
                 "jobid=" + jobid +
                 ", type='" + type + '\'' +
-                ", endDate='" + endDate + '\'' +
+                ", edate='" + edate + '\'' +
+                ", sdate='" + sdate + '\'' +
                 ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
-                ", startDate='" + startDate + '\'' +
+                ", logo='" + logo + '\'' +
+                ", url='" + url + '\'' +
                 ", orderParam='" + orderParam + '\'' +
                 '}';
     }
