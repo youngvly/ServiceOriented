@@ -1,7 +1,9 @@
 package koreatech.cse.thread;
 
+import koreatech.cse.domain.job.Job;
 import koreatech.cse.domain.worknet.WorkNetItem;
 import koreatech.cse.repository.WorknetMapper;
+import koreatech.cse.service.news.NaverNewsGet;
 import koreatech.cse.service.worknet.WorknetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.HttpClientErrorException;
@@ -17,12 +19,17 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.inject.Inject;
 
 public class TimerAutoJob implements Runnable {
     @Inject
     private WorknetService worknetService;
+    @Inject
+    private NaverNewsGet naverNewsGet;
+    @Inject
+    private WorknetMapper worknetMapper;
 
     WorkNetItem workNetItem = null;
 
@@ -85,6 +92,12 @@ public class TimerAutoJob implements Runnable {
                         */
                     }
                 }
+            }
+
+            List<Job> jobList = worknetMapper.selectAllJobName();
+            System.out.println(jobList);
+            for(Job j : jobList){
+                naverNewsGet.getNewsByQuery(j.getName());
             }
 
         } catch (HttpClientErrorException e) {

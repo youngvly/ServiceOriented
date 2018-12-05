@@ -77,4 +77,24 @@ public class NewsService {
             }
         }
     }
+
+    //가져온 뉴스들중 가장 오래된 뉴스 기준으로 더오래된 DB에있는 뉴스 삭제
+    public void deleteOldNewsByJobName(List<NewsItems> newsItems,String jobName) {
+        String oldestPubdate = newsItems.get(0).getPubDate();
+        NewsSearchable newsSearchable = new NewsSearchable();
+        newsSearchable.setOrderParam("pubdate");
+        newsSearchable.setJobname(jobName);
+        List<NewsItems> newsItemsDB = newsMapper.findByProvider(newsSearchable);
+
+        for(NewsItems item : newsItems){
+            if (isOld(oldestPubdate,item.getPubDate())){
+                oldestPubdate = item.getPubDate();
+            }
+        }
+        for(NewsItems itemDB : newsItemsDB){
+            if (isOld(itemDB.getPubDate(),oldestPubdate)){
+                newsMapper.delete(itemDB.getNewsid());
+            }
+        }
+    }
 }

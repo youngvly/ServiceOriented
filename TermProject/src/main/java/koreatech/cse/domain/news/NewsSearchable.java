@@ -9,6 +9,15 @@ public class NewsSearchable {
     private int newsid = -1;
     private int jobid = -1;
     private String orderParam;
+    private String jobname;
+
+    public String getJobname() {
+        return jobname;
+    }
+
+    public void setJobname(String jobname) {
+        this.jobname = jobname;
+    }
 
     public String getOrderParam() {
         return orderParam;

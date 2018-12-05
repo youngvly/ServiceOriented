@@ -10,14 +10,21 @@ public class NewsSqlProvider {
             {
                 SELECT("*");
                 FROM("jobBoard_DB.news");
-                if(searchable.getJobid() >0) {
+                if(searchable.getJobname() != null){
+                    WHERE("jobname = #{jobname}");
+                    if(searchable.getNewsid() >0) {
+                        OR();
+                        WHERE("NEWSID = #{newsid}");
+                    }
+                }
+                else if(searchable.getJobid() >0) {
                     WHERE("JOBID= #{jobid}");
                     if(searchable.getNewsid() >0) {
                         OR();
                         WHERE("NEWSID = #{newsid}");
                     }
                 }
-                if(searchable.getOriginalLink() != null) {
+                else if(searchable.getOriginalLink() != null) {
                     WHERE("ORIGINALLINK = #{originalLink}");
                 }
                 if(searchable.getOrderParam() != null) {

@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository
 public interface NewsMapper {
-    @Insert("INSERT INTO jobBoard_DB.news (TITLE, DESCRIPTION, NAVERLINK, ORIGINALLINK,PUBDATE,JOBID) VALUES (#{title}, #{description}, #{link}, #{originallink}, #{pubDate},#{jobid})")
+    @Insert("INSERT INTO jobBoard_DB.news (TITLE, DESCRIPTION, NAVERLINK, ORIGINALLINK,PUBDATE,JOBID,JOBNAME) VALUES (#{title}, #{description}, #{link}, #{originallink}, #{pubDate},#{jobid},#{jobname})")
     @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "newsid", before = false, resultType = int.class)
     void insert(NewsItems newsNewsItems);
 

@@ -1,9 +1,8 @@
 package koreatech.cse.service.Combi;
 
-import koreatech.cse.domain.Searchable;
 import koreatech.cse.domain.combi.Combi_job_news;
+import koreatech.cse.domain.combi.Combi_worknet_navernews;
 import koreatech.cse.domain.job.Job;
-import koreatech.cse.domain.news.News;
 import koreatech.cse.domain.news.NewsItems;
 import koreatech.cse.domain.news.NewsSearchable;
 import koreatech.cse.repository.JobMapper;
@@ -54,4 +53,5 @@ public class Combine_job_News_Service {
 
         return cjb;
     }
+
 }

@@ -1,6 +1,6 @@
 package koreatech.cse.domain.worknet;
 
-public class WorkNetItem {
+public class WorkNetSearchable {
 
     public int getJobid() {
         return jobid;
@@ -11,153 +11,76 @@ public class WorkNetItem {
     }
 
     private int jobid;
-    private String total;
+    private String type;     //type
 
-    private String empWantedTypeNm;
+    private String endDate;           //enddate
 
-    private String empWantedHomepgDetail;
+    private String name;       //name
 
-    private String empWantedEndt;
+    private String title;  //title
 
-    private String empBusiNm;
+    private String startDate;           //startdate
 
-    private String coClcdNm;
+    private String orderParam;
 
-    private String regLogImgNm;
-
-    private String empSeqno;
-
-    private String empWantedTitle;
-
-    private String display;
-
-    private String startPage;
-
-    private String empWantedStdt;
-
-    public String getTotal ()
-    {
-        return total;
+    public String getType() {
+        return type;
     }
 
-    public void setTotal (String total)
-    {
-        this.total = total;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getEmpWantedTypeNm ()
-    {
-        return empWantedTypeNm;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setEmpWantedTypeNm (String empWantedTypeNm)
-    {
-        this.empWantedTypeNm = empWantedTypeNm;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
-    public String getEmpWantedHomepgDetail ()
-    {
-        return empWantedHomepgDetail;
+    public String getName() {
+        return name;
     }
 
-    public void setEmpWantedHomepgDetail (String empWantedHomepgDetail)
-    {
-        this.empWantedHomepgDetail = empWantedHomepgDetail;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEmpWantedEndt ()
-    {
-        return empWantedEndt;
+    public String getTitle() {
+        return title;
     }
 
-    public void setEmpWantedEndt (String empWantedEndt)
-    {
-        this.empWantedEndt = empWantedEndt;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getEmpBusiNm ()
-    {
-        return empBusiNm;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setEmpBusiNm (String empBusiNm)
-    {
-        this.empBusiNm = empBusiNm;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getCoClcdNm ()
-    {
-        return coClcdNm;
+    public String getOrderParam() {
+        return orderParam;
     }
 
-    public void setCoClcdNm (String coClcdNm)
-    {
-        this.coClcdNm = coClcdNm;
-    }
-
-    public String getRegLogImgNm ()
-    {
-        return regLogImgNm;
-    }
-
-    public void setRegLogImgNm (String regLogImgNm)
-    {
-        this.regLogImgNm = regLogImgNm;
-    }
-
-    public String getEmpSeqno ()
-    {
-        return empSeqno;
-    }
-
-    public void setEmpSeqno (String empSeqno)
-    {
-        this.empSeqno = empSeqno;
-    }
-
-    public String getEmpWantedTitle ()
-    {
-        return empWantedTitle;
-    }
-
-    public void setEmpWantedTitle (String empWantedTitle)
-    {
-        this.empWantedTitle = empWantedTitle;
-    }
-
-    public String getDisplay ()
-    {
-        return display;
-    }
-
-    public void setDisplay (String display)
-    {
-        this.display = display;
-    }
-
-    public String getStartPage ()
-    {
-        return startPage;
-    }
-
-    public void setStartPage (String startPage)
-    {
-        this.startPage = startPage;
-    }
-
-    public String getEmpWantedStdt ()
-    {
-        return empWantedStdt;
-    }
-
-    public void setEmpWantedStdt (String empWantedStdt)
-    {
-        this.empWantedStdt = empWantedStdt;
+    public void setOrderParam(String orderParam) {
+        this.orderParam = orderParam;
     }
 
     @Override
-    public String toString()
-    {
-        return "ClassPojo [total = "+total+", empWantedTypeNm = "+empWantedTypeNm+", empWantedHomepgDetail = "+empWantedHomepgDetail+", empWantedEndt = "+empWantedEndt+", empBusiNm = "+empBusiNm+", coClcdNm = "+coClcdNm+", regLogImgNm = "+regLogImgNm+", empSeqno = "+empSeqno+", empWantedTitle = "+empWantedTitle+", display = "+display+", startPage = "+startPage+", empWantedStdt = "+empWantedStdt+"]";
+    public String toString() {
+        return "WorkNetSearchable{" +
+                "jobid=" + jobid +
+                ", type='" + type + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", orderParam='" + orderParam + '\'' +
+                '}';
     }
 }

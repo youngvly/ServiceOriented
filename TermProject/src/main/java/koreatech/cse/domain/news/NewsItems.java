@@ -24,6 +24,9 @@ public class NewsItems {
 
     private int newsid;
     private int jobid;
+    private String jobname;
+
+
     @JsonProperty("title")
     private String title;
     @JsonProperty("originallink")
@@ -36,6 +39,14 @@ public class NewsItems {
     private String pubDate;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public String getJobname() {
+        return jobname;
+    }
+
+    public void setJobname(String jobname) {
+        this.jobname = jobname;
+    }
 
     public int getNewsid() {
         return newsid;
