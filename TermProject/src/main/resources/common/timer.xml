@@ -7,14 +7,19 @@
                             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd "
 >
 
-    <bean id="batchExecutor" class="koreatech.cse.thread.TimerAutoPull"/>
+    <!--<bean id="newsTimer" class="koreatech.cse.thread.TimerAutoPull"/>-->
+    <bean id="workNetTimer" class="koreatech.cse.thread.TimerAutoJob"/>
 
     <task:scheduler id="taskScheduler" pool-size="10"></task:scheduler>
     <task:scheduled-tasks>
         <!--"초 분 시 일 월  년"-->
         <!--0 0/3 * * * * : 3분간격으로 실행-->
         <!--"0 0 12 * * *" : 매일 12시에 실행-->
-        <task:scheduled ref="batchExecutor" method="run" cron="0 0/1 * * * *"/>
+        <!--<task:scheduled ref="batchExecutor" method="run" cron="0 0 10 * * *"/>-->
+        <!--<task:scheduled ref="batchExecutor" method="run" cron="0 0 17 * * *"/>-->
+        <!--<task:scheduled ref="newsTimer" method="run" cron="0 0/1 * * * *"/>-->
+        <task:scheduled ref="workNetTimer" method="run" cron="0 0 10 * * *"/>
+        <task:scheduled ref="workNetTimer" method="run" cron="0 0 17 * * *"/>
     </task:scheduled-tasks>
 
 </beans>
