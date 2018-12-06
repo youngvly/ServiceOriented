@@ -1,6 +1,7 @@
 package koreatech.cse.service.Combi;
 
 import koreatech.cse.domain.combi.Combi_worknet_navernews;
+import koreatech.cse.domain.job.Job;
 import koreatech.cse.domain.news.NewsSearchable;
 import koreatech.cse.domain.worknet.WorkNetItem;
 import koreatech.cse.domain.worknet.WorkNetSearchable;
@@ -9,6 +10,7 @@ import koreatech.cse.repository.WorknetMapper;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,6 +21,15 @@ public class Combine_worknet_News_Service {
     @Inject
     NewsMapper newsMapper;
 
+    public List<Combi_worknet_navernews> getAllCombi(){
+        //get all job name
+        List<Job> jobList =  worknetMapper.selectAllJobName();
+        List<Combi_worknet_navernews> cwnList = new ArrayList<>();
+        for(Job j : jobList){
+            cwnList.add(combineWorknetNewsByJobName(j.getName()));
+        }
+        return cwnList;
+    }
     public Combi_worknet_navernews combineWorknetNewsByJobName(String jobname){
         Combi_worknet_navernews cwn = new Combi_worknet_navernews();
 
@@ -33,4 +44,19 @@ public class Combine_worknet_News_Service {
 
         return cwn;
     }
+/*
+    public List<Combi_worknet_navernews> combineWorknetNewsByJobType(String jobtype){
+        List<Combi_worknet_navernews> cwn = new ArrayList<>() ;
+
+        WorkNetSearchable workNetSearchable = new WorkNetSearchable();
+        workNetSearchable.setType(jobtype);
+        List<WorkNetSearchable> foundWork = worknetMapper.select(workNetSearchable);
+        cwn.
+
+
+        NewsSearchable newsSearchable = new NewsSearchable();
+
+
+        return cwn;
+    }*/
 }

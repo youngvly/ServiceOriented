@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
+import java.util.List;
 
 @Controller
 @RequestMapping("/api")
@@ -33,20 +34,30 @@ public class APIController {
     @RequestMapping("/about")
     public String apiAbout() {return "apiAbout";}
 
-//    @Transactional
-//    @RequestMapping(value="/json/jobname/{jobname}" ,method= RequestMethod.GET, produces = "application/json")
-//    public ResponseEntity<Combi_job_news> json_findByJob (@PathVariable  String jobname){
-//        Combi_job_news cjn = combine_job_news_service.combineJobNewsByJobName(jobname);
-//        if (cjn == null){
-//            return new ResponseEntity<Combi_job_news>(HttpStatus.NOT_FOUND);
-//        }
-//        return new ResponseEntity<Combi_job_news>(cjn,HttpStatus.OK);
-//    }
-
+    @Transactional
+    @RequestMapping(value="/json/all" ,method= RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<Combi_worknet_navernews>> json_getAll (){
+        List<Combi_worknet_navernews> cwnList = combine_worknet_news_service.getAllCombi();
+        if (cwnList == null){
+            return new ResponseEntity<List<Combi_worknet_navernews>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<Combi_worknet_navernews>>(cwnList,HttpStatus.OK);
+    }
+    //직업명 검색
     @Transactional
     @RequestMapping(value="/json/jobname/{jobname}" ,method= RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Combi_worknet_navernews> json_findByJob (@PathVariable  String jobname){
+    public ResponseEntity<Combi_worknet_navernews> json_findByName (@PathVariable  String jobname){
         Combi_worknet_navernews cwn = combine_worknet_news_service.combineWorknetNewsByJobName(jobname);
+        if (cwn == null){
+            return new ResponseEntity<Combi_worknet_navernews>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Combi_worknet_navernews>(cwn,HttpStatus.OK);
+    }
+    //타입검색 (정규직..)
+    @Transactional
+    @RequestMapping(value="/json/jobtype/{jobname}" ,method= RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Combi_worknet_navernews> json_findByType (@PathVariable  String jobtype){
+        Combi_worknet_navernews cwn = combine_worknet_news_service.combineWorknetNewsByJobName(jobtype);
         if (cwn == null){
             return new ResponseEntity<Combi_worknet_navernews>(HttpStatus.NOT_FOUND);
         }
