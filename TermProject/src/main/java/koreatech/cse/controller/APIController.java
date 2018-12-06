@@ -29,6 +29,10 @@ public class APIController {
     Combine_worknet_News_Service combine_worknet_news_service;
 
 
+
+    @RequestMapping("/about")
+    public String apiAbout() {return "apiAbout";}
+
 //    @Transactional
 //    @RequestMapping(value="/json/jobname/{jobname}" ,method= RequestMethod.GET, produces = "application/json")
 //    public ResponseEntity<Combi_job_news> json_findByJob (@PathVariable  String jobname){
@@ -48,5 +52,6 @@ public class APIController {
         }
         return new ResponseEntity<Combi_worknet_navernews>(cwn,HttpStatus.OK);
     }
+
 
 }
