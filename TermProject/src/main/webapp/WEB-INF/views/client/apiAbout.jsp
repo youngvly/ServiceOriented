@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
@@ -5,7 +6,30 @@
 <html lang="en">
 
   <head>
-
+    <style>
+      table.type11 {
+        border-collapse: separate;
+        border-spacing: 1px;
+        text-align: center;
+        line-height: 1.5;
+        margin: 20px 10px;
+      }
+      table.type11 th {
+        width: 100%;
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: top;
+        color: #fff;
+        background: #ce4869 ;
+      }
+      table.type11 td {
+        width: 100%;
+        padding: 10px;
+        vertical-align: top;
+        border-bottom: 1px solid #ccc;
+        background: #eee;
+      }
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -78,6 +102,33 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
+            <h1 class="section-heading">요청 URL</h1>
+            <table class="type11">
+              <thead>
+              <tr>
+                <th scope="cols">URL</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>http://openapi.work.go.kr/opi/opi/opia/wantedApi.do</th>
+              </tr>
+              </tbody>
+            </table>
+
+            <table border="1" summary="이 표는 REST API 요청 URL 정보를 제공합니다." class="list_blue_pad">
+              <caption>요청 URL</caption>
+              <thead>
+                <tr>
+                  <th>URL</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>http://openapi.work.go.kr/opi/opi/opia/wantedApi.do</td>
+              </tr>
+              </tbody>
+            </table>
             <p>1. API 기본정보</p>
             <table>
               <th>

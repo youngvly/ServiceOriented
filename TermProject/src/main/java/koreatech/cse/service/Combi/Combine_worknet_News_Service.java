@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import java.util.List;
 
-import static javafx.beans.binding.Bindings.select;
-
 @Service
 public class Combine_worknet_News_Service {
 
