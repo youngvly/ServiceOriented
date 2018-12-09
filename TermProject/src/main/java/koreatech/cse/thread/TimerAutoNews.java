@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 
-public class TimerAutoPull implements Runnable {
+public class TimerAutoNews implements Runnable {
 
     private static int number = 0;
     @Inject
@@ -24,7 +24,7 @@ public class TimerAutoPull implements Runnable {
     @Override
     public void run() {
         //logControl.func();
-//        logger.info("DB Updated | " + number++ + " times");
+        logger.info("DB NEWS Updated | " + number++ + " times");
 //        List<Job> jobList =  jobMapper.findAllJob();
 //        for(Job job : jobList){
 //            naverNewsGet.getNewsByQuery(job.getName());

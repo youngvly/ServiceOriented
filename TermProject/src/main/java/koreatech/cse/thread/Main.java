@@ -26,7 +26,7 @@ public class Main {
     }
 
     private static void setTimeThread() {
-        ScheduledFuture<?> scheduledFuture = scheduler.scheduleAtFixedRate( new TimerAutoPull(),
+        ScheduledFuture<?> scheduledFuture = scheduler.scheduleAtFixedRate( new TimerAutoNews(),
                 10,                         //1초뒤에
                 60,                         //1초마다 한번씩 실행
                 TimeUnit.SECONDS);

@@ -47,7 +47,7 @@ public class NaverNewsGet {
 
 //    @PreAuthorize("hasRole('ROLE_ADMIN')")
 //    @RequestMapping("/getandinsert/{query}")
-    public String getNewsByQuery(@PathVariable  String query){
+    public String getNewsByQuery(String query){
 
 //        System.out.println(query);
 //        Job job = jobMapper.findByJobName(query);
