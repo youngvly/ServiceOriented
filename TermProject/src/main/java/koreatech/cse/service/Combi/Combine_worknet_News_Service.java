@@ -62,7 +62,7 @@ public class Combine_worknet_News_Service {
         return cwnList;
     }
     //날짜검색
-    public List<Combi_worknet_navernews> combineWorknetNewsByDate (String start, String end){
+    public List<Combi_worknet_navernews> combineWorknetNewsByDate (int start, int end){
         List <Combi_worknet_navernews> cwnList = new ArrayList<>();
 
         WorkNetSearchable workNetSearchable = new WorkNetSearchable();
@@ -81,10 +81,15 @@ public class Combine_worknet_News_Service {
 
         WorkNetSearchable workNetSearchable = new WorkNetSearchable();
 
-        workNetSearchable.setName((String)map.get("name"));
-        workNetSearchable.setSdate((String)map.get("startDate"));
-        workNetSearchable.setEdate((String)map.get("endDate"));
-        workNetSearchable.setType((String)map.get("type"));
+        if (map.containsKey("name"))
+            workNetSearchable.setName((String)map.get("name"));
+        if(map.containsKey("startDate"))
+            workNetSearchable.setSdate(Integer.parseInt((String)map.get("startDate")));
+        if(map.containsKey("endDate"))
+            workNetSearchable.setEdate(Integer.parseInt((String)map.get("endDate")));
+        if(map.containsKey("type"))
+            workNetSearchable.setType((String)map.get("type"));
+
         List <WorkNetSearchable> foundWork = worknetMapper.select(workNetSearchable);
 
 

@@ -31,7 +31,7 @@ public class TimerAutoNews implements Runnable {
 //        }
 
         List<Job> jobList = worknetMapper.selectAllJobName();
-        System.out.println(jobList);
+       // System.out.println(jobList);
         for(Job j : jobList){
             naverNewsGet.getNewsByQuery(j.getName());
         }

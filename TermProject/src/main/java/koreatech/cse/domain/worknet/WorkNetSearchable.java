@@ -13,8 +13,8 @@ public class WorkNetSearchable {
     private int jobid;
     private String type;     //type
 
-    private String edate;           //enddate
-    private String sdate;           //startdate
+    private int edate;
+    private int sdate;
 
     private String name;       //name
 
@@ -33,19 +33,19 @@ public class WorkNetSearchable {
         this.type = type;
     }
 
-    public String getEdate() {
+    public int getEdate() {
         return edate;
     }
 
-    public void setEdate(String edate) {
+    public void setEdate(int edate) {
         this.edate = edate;
     }
 
-    public String getSdate() {
+    public int getSdate() {
         return sdate;
     }
 
-    public void setSdate(String sdate) {
+    public void setSdate(int sdate) {
         this.sdate = sdate;
     }
 

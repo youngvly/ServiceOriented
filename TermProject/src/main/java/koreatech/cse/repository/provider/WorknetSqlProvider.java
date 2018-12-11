@@ -22,15 +22,13 @@ public class WorknetSqlProvider {
                         WHERE("TITLE = #{title}");
                     }
                     //날짜검색
-                    if(searchable.getSdate() != null) {
+                    if(searchable.getSdate() >0) {
                         //작으면 더 오래된거
-                        int temp = Integer.parseInt("#{sdate}");
                         AND();
-                        WHERE("sdateInt >= " + temp);
-                        if(searchable.getEdate()!= null){
+                        WHERE("sdate >= #{sdate}" );
+                        if(searchable.getEdate()>0){
                             AND();
-                            temp = Integer.parseInt("#{edate}");
-                            WHERE ("edateInt <= " + temp);
+                            WHERE ("edate <= #{edate}");
                         }
                     }
                     //type검색도 있을경우
@@ -40,14 +38,12 @@ public class WorknetSqlProvider {
                     }
                 }
                 //날짜검색
-                else if(searchable.getSdate() != null) {
+                else if(searchable.getSdate() >0) {
                     //작으면 더 오래된거
-                    int temp = Integer.parseInt("#{sdate}");
-                    WHERE("sdateInt >= " + temp);
-                    if(searchable.getEdate()!= null){
+                    WHERE("sdate >= #{sdate}" );
+                    if(searchable.getEdate()>0){
                         AND();
-                        temp = Integer.parseInt("#{edate}");
-                        WHERE ("edateInt <= " + temp);
+                        WHERE ("edate <= #{edate}");
                     }
                     //type검색도 있을경우
                     if (searchable.getType() != null){
