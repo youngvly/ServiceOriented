@@ -1,6 +1,8 @@
 package koreatech.cse.controller;
 
+import koreatech.cse.domain.worknet.WorkNetSearchable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -17,7 +19,19 @@ public class HomeController {
     }
 
     @RequestMapping("/search/condition")
-    public String conditionSearch() {return "searchCondition";}
+    public String conditionSearch(Model model) {
+        WorkNetSearchable workNetSearchable = new WorkNetSearchable();
+        model.addAttribute("jobSearch",workNetSearchable);
+        return "searchCondition";
+    }
+
+    @RequestMapping(value = "/search/condition" ,method = RequestMethod.POST)
+    public String conditionSearched(Model model,@ModelAttribute WorkNetSearchable workNetSearchable){
+//        model.addAttribute();
+        return "redirect:/search/condition";
+    }
+
+
     @RequestMapping("/search/jobname")
     public String jobnameSearch() {return "searchJobname";}
 }

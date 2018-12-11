@@ -1,7 +1,6 @@
 package koreatech.cse.controller.rest;
 
 import koreatech.cse.domain.rest.Temperature;
-import koreatech.cse.repository.TemperatureMapper;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

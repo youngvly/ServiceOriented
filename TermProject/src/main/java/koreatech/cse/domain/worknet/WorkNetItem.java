@@ -2,15 +2,6 @@ package koreatech.cse.domain.worknet;
 
 public class WorkNetItem {
 
-    public int getJobid() {
-        return jobid;
-    }
-
-    public void setJobid(int jobid) {
-        this.jobid = jobid;
-    }
-
-    private int jobid;
     private String total;
 
     private String empWantedTypeNm;

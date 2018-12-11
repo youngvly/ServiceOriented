@@ -4,7 +4,6 @@ import koreatech.cse.domain.combi.Combi_job_news;
 import koreatech.cse.domain.combi.Combi_worknet_navernews;
 import koreatech.cse.repository.JobMapper;
 import koreatech.cse.repository.NewsMapper;
-import koreatech.cse.service.Combi.Combine_job_News_Service;
 import koreatech.cse.service.Combi.Combine_worknet_News_Service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -28,8 +27,6 @@ public class APIController {
 
     @Value("${env.text}")
     private String envText;
-//    @Inject
-//    Combine_job_News_Service combine_job_news_service;
     @Inject
     Combine_worknet_News_Service combine_worknet_news_service;
 

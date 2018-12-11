@@ -55,10 +55,7 @@ public class WorknetSqlProvider {
                 else if (searchable.getType() != null){
                     WHERE("TYPE LIKE '%' #{type} '%'");
                 }
-                if(searchable.getOrderParam() != null) {
 
-                    ORDER_BY(searchable.getOrderParam() + " DESC");
-                }
             }
         }.toString();
     }

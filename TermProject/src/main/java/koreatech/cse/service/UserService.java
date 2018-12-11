@@ -3,7 +3,6 @@ package koreatech.cse.service;
 import koreatech.cse.domain.Authority;
 import koreatech.cse.domain.User;
 import koreatech.cse.domain.oauth2.kakao.KakaoProfile;
-import koreatech.cse.domain.oauth2.facebook.FacebookProfile;
 import koreatech.cse.repository.AuthorityMapper;
 import koreatech.cse.repository.UserMapper;
 import org.springframework.http.HttpEntity;
@@ -41,7 +40,6 @@ public class UserService implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     private HashMap<Integer, AccessGrant> kakaoAccessTokenMap = new HashMap();
-    private HashMap<Long, AccessGrant> facebookAccessTokenMap = new HashMap();
 
     public Boolean signup(User user) {
         if(user.getEmail() == null || user.getPassword() ==  null)
@@ -105,41 +103,10 @@ public class UserService implements UserDetailsService {
         return "redirect:/";
     }
 
-    public String facebookLogin(HttpServletRequest request, AccessGrant accessGrant) throws Exception{
-        FacebookProfile facebookProfile = getFacebookProfile(accessGrant);
-
-        User user = userMapper.findByEmail(facebookProfile.getId().toString());
-        if (user == null) {
-            user = new User();
-            user.setEmail(facebookProfile.getId().toString());
-            user.setName(facebookProfile.getName());
-            user.setAge(-2);
-            user.setPassword("0000");
-            signup(user);
-
-            facebookAccessTokenMap.put(facebookProfile.getId(), accessGrant);
-            System.out.println(facebookAccessTokenMap + "*****");
-        }
-
-        List<Authority> authorities = authorityMapper.findByUserId(user.getId());
-        user.setAuthorities(authorities);
-        Authentication authentication = new UsernamePasswordAuthenticationToken(user, "0000", user.getAuthorities());
-
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-        HttpSession session = request.getSession(true);
-        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-
-        return "redirect:/";
-    }
-
     public HashMap<Integer, AccessGrant> getKakaoAccessTokenMap() {
         return kakaoAccessTokenMap;
     }
 
-    public HashMap<Long, AccessGrant> getFacebookAccessTokenMap() {
-        return facebookAccessTokenMap;
-    }
 
     public KakaoProfile getKakaoProfile(AccessGrant accessGrant) {
         RestTemplate restTemplate = new RestTemplate();
@@ -163,29 +130,5 @@ public class UserService implements UserDetailsService {
             System.out.println(e.getStatusCode() + ": " + e.getStatusText());
         }
         return kakaoProfile;
-    }
-
-    public FacebookProfile getFacebookProfile(AccessGrant accessGrant) {
-        RestTemplate restTemplate = new RestTemplate();
-        FacebookProfile facebookProfile = null;
-        try {
-            MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-            headers.add("Authorization", "Bearer " + accessGrant.getAccessToken());
-
-            String facebook_profile_url = "https://graph.facebook.com/v3.2/me?fields=email,name,id,friends";
-
-            ResponseEntity<FacebookProfile> facebookProfileResponseEntity = restTemplate.exchange(
-                    facebook_profile_url,
-                    HttpMethod.GET,
-                    new HttpEntity<Object>(headers),
-                    FacebookProfile.class
-            );
-
-            facebookProfile = facebookProfileResponseEntity.getBody();
-            System.out.println("!!! " + facebookProfile);
-        } catch (HttpClientErrorException e) {
-            System.out.println(e.getStatusCode() + ": " + e.getStatusText());
-        }
-        return facebookProfile;
     }
 }

@@ -63,7 +63,6 @@ public class NewsService {
         String oldestPubdate = newsItems.get(0).getPubDate();
         NewsSearchable newsSearchable = new NewsSearchable();
         newsSearchable.setOrderParam("pubdate");
-        newsSearchable.setJobid(jobid);
         List<NewsItems> newsItemsDB = newsMapper.findByProvider(newsSearchable);
 
         for(NewsItems item : newsItems){

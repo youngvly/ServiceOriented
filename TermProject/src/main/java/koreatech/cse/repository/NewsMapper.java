@@ -23,9 +23,6 @@ public interface NewsMapper {
 
     @Select("SELECT * FROM NEWS WHERE NEWSID = #{newsid}")
     NewsItems findOne(@Param("newsid") int newsid);
-
-    @Select("SELECT * FROM NEWS WHERE JOBID = #{jobid}")
-    NewsItems findByJobid(@Param("jobId") int jobid);
 */
     @SelectProvider(type = NewsSqlProvider.class, method = "findAllByProvider")
     List<NewsItems> findByProvider(NewsSearchable newsSearchable);

@@ -23,7 +23,7 @@ public class WorkNetSearchable {
     private String logo;
     private String url;
 
-    private String orderParam;
+//    private String orderParam;
 
     public String getType() {
         return type;
@@ -81,13 +81,13 @@ public class WorkNetSearchable {
         this.url = url;
     }
 
-    public String getOrderParam() {
-        return orderParam;
-    }
+//    public String getOrderParam() {
+//        return orderParam;
+//    }
 
-    public void setOrderParam(String orderParam) {
-        this.orderParam = orderParam;
-    }
+//    public void setOrderParam(String orderParam) {
+//        this.orderParam = orderParam;
+//    }
 
     @Override
     public String toString() {
@@ -100,7 +100,7 @@ public class WorkNetSearchable {
                 ", title='" + title + '\'' +
                 ", logo='" + logo + '\'' +
                 ", url='" + url + '\'' +
-                ", orderParam='" + orderParam + '\'' +
+//                ", orderParam='" + orderParam + '\'' +
                 '}';
     }
 }
