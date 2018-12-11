@@ -1,11 +1,8 @@
 package koreatech.cse.thread;
 
-import koreatech.cse.domain.job.Job;
 import koreatech.cse.domain.worknet.WorkNetItem;
-import koreatech.cse.repository.WorknetMapper;
-import koreatech.cse.service.news.NaverNewsGet;
 import koreatech.cse.service.worknet.WorknetService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.client.HttpClientErrorException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -19,19 +16,19 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 import javax.inject.Inject;
 
 public class TimerAutoJob implements Runnable {
     @Inject
     private WorknetService worknetService;
-    @Inject
-    private NaverNewsGet naverNewsGet;
-    @Inject
-    private WorknetMapper worknetMapper;
+
+    private static int number = 0;
 
     WorkNetItem workNetItem = null;
+
+    private Logger logger = org.apache.logging.log4j.LogManager.getLogger(LogControl.class);
+
 
     // XML 태그를 가져 올 수 있는 함수
     private static String getTagValue(String tag, Element eElement) {
@@ -52,6 +49,7 @@ public class TimerAutoJob implements Runnable {
     @Override
     public void run() {
         try {
+            logger.info("DB WORKNET Updated | " + number++ + " times");
             DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
             String workNetURL = "http://openapi.work.go.kr/opi/opi/opia/dhsOpenEmpInfoAPI.do?authKey=WNJOZFA0SUBQIQ9WUQ6MH2VR1HJ&callTp=L&returnType=XML&startPage=1&display=100";
@@ -92,12 +90,6 @@ public class TimerAutoJob implements Runnable {
                         */
                     }
                 }
-            }
-
-            List<Job> jobList = worknetMapper.selectAllJobName();
-            System.out.println(jobList);
-            for(Job j : jobList){
-                naverNewsGet.getNewsByQuery(j.getName());
             }
 
         } catch (HttpClientErrorException e) {

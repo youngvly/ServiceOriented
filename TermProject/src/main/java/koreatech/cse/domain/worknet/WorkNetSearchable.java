@@ -13,8 +13,8 @@ public class WorkNetSearchable {
     private int jobid;
     private String type;     //type
 
-    private String edate;           //enddate
-    private String sdate;           //startdate
+    private int edate;
+    private int sdate;
 
     private String name;       //name
 
@@ -23,7 +23,7 @@ public class WorkNetSearchable {
     private String logo;
     private String url;
 
-    private String orderParam;
+//    private String orderParam;
 
     public String getType() {
         return type;
@@ -33,19 +33,19 @@ public class WorkNetSearchable {
         this.type = type;
     }
 
-    public String getEdate() {
+    public int getEdate() {
         return edate;
     }
 
-    public void setEdate(String edate) {
+    public void setEdate(int edate) {
         this.edate = edate;
     }
 
-    public String getSdate() {
+    public int getSdate() {
         return sdate;
     }
 
-    public void setSdate(String sdate) {
+    public void setSdate(int sdate) {
         this.sdate = sdate;
     }
 
@@ -81,13 +81,13 @@ public class WorkNetSearchable {
         this.url = url;
     }
 
-    public String getOrderParam() {
-        return orderParam;
-    }
+//    public String getOrderParam() {
+//        return orderParam;
+//    }
 
-    public void setOrderParam(String orderParam) {
-        this.orderParam = orderParam;
-    }
+//    public void setOrderParam(String orderParam) {
+//        this.orderParam = orderParam;
+//    }
 
     @Override
     public String toString() {
@@ -100,7 +100,7 @@ public class WorkNetSearchable {
                 ", title='" + title + '\'' +
                 ", logo='" + logo + '\'' +
                 ", url='" + url + '\'' +
-                ", orderParam='" + orderParam + '\'' +
+//                ", orderParam='" + orderParam + '\'' +
                 '}';
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class Combine_worknet_News_Service {
@@ -21,15 +22,6 @@ public class Combine_worknet_News_Service {
     @Inject
     NewsMapper newsMapper;
 
-    public List<Combi_worknet_navernews> getAllCombi(){
-        //get all job name
-        List<Job> jobList =  worknetMapper.selectAllJobName();
-        List<Combi_worknet_navernews> cwnList = new ArrayList<>();
-        for(Job j : jobList){
-            cwnList.add(combineWorknetNewsByJobName(j.getName()));
-        }
-        return cwnList;
-    }
     public Combi_worknet_navernews combineWorknetNewsByJobName(String jobname){
         Combi_worknet_navernews cwn = new Combi_worknet_navernews();
 
@@ -44,19 +36,64 @@ public class Combine_worknet_News_Service {
 
         return cwn;
     }
-/*
+
+    public List<Combi_worknet_navernews> getAllCombi(){
+        //get all job name
+        List<Job> jobList =  worknetMapper.selectAllJobName();
+        List<Combi_worknet_navernews> cwnList = new ArrayList<>();
+        for(Job j : jobList){
+            cwnList.add(combineWorknetNewsByJobName(j.getName()));
+        }
+        return cwnList;
+    }
+
+    //타입검색
     public List<Combi_worknet_navernews> combineWorknetNewsByJobType(String jobtype){
-        List<Combi_worknet_navernews> cwn = new ArrayList<>() ;
+        List<Combi_worknet_navernews> cwnList = new ArrayList<>() ;
 
         WorkNetSearchable workNetSearchable = new WorkNetSearchable();
         workNetSearchable.setType(jobtype);
         List<WorkNetSearchable> foundWork = worknetMapper.select(workNetSearchable);
-        cwn.
+        for (WorkNetSearchable w : foundWork){
+            cwnList.add(combineWorknetNewsByJobName(w.getName()));
+        }
+        return cwnList;
+    }
+    //날짜검색
+    public List<Combi_worknet_navernews> combineWorknetNewsByDate (int start, int end){
+        List <Combi_worknet_navernews> cwnList = new ArrayList<>();
+
+        WorkNetSearchable workNetSearchable = new WorkNetSearchable();
+        workNetSearchable.setSdate(start);
+        workNetSearchable.setEdate(end);
+        List <WorkNetSearchable> foundWork = worknetMapper.select(workNetSearchable);
+
+        for(WorkNetSearchable w : foundWork){
+            cwnList.add(combineWorknetNewsByJobName(w.getName()));
+        }
+        return cwnList;
+    }
+
+    public List<Combi_worknet_navernews> combineWorknetNewsByMap (Map map){
+        List<Combi_worknet_navernews> cwnList = new ArrayList<>();
+
+        WorkNetSearchable workNetSearchable = new WorkNetSearchable();
+
+        if (map.containsKey("name"))
+            workNetSearchable.setName((String)map.get("name"));
+        if(map.containsKey("startDate"))
+            workNetSearchable.setSdate(Integer.parseInt((String)map.get("startDate")));
+        if(map.containsKey("endDate"))
+            workNetSearchable.setEdate(Integer.parseInt((String)map.get("endDate")));
+        if(map.containsKey("type"))
+            workNetSearchable.setType((String)map.get("type"));
+
+        List <WorkNetSearchable> foundWork = worknetMapper.select(workNetSearchable);
 
 
-        NewsSearchable newsSearchable = new NewsSearchable();
-
-
-        return cwn;
-    }*/
+        for(WorkNetSearchable w : foundWork){
+            cwnList.add(combineWorknetNewsByJobName(w.getName()));
+        }
+        return cwnList;
+    }
 }

@@ -50,6 +50,4 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <aop:aspectj-autoproxy />
-    <bean id="userServiceAspect" class="koreatech.cse.aop.AopTester" />
 </beans>

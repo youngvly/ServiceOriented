@@ -23,7 +23,6 @@ public class NewsItems {
 
 
     private int newsid;
-    private int jobid;
     private String jobname;
 
 
@@ -56,13 +55,6 @@ public class NewsItems {
         this.newsid = newsid;
     }
 
-    public int getJobid() {
-        return jobid;
-    }
-
-    public void setJobid(int jobid) {
-        this.jobid = jobid;
-    }
     @JsonProperty("title")
     public String getTitle() {
         return title;
