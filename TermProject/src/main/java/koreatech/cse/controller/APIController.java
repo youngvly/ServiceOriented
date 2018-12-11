@@ -38,8 +38,9 @@ public class APIController {
     @RequestMapping("/about")
     public String apiAbout() {return "apiAbout";}
 
+    //all
     @Transactional
-    @RequestMapping(value="/json/all" ,method= RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value="/json/job/employList" ,method= RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<Combi_worknet_navernews>> json_getAll (){
         List<Combi_worknet_navernews> cwnList = combine_worknet_news_service.getAllCombi();
         if (cwnList == null){
@@ -72,7 +73,7 @@ public class APIController {
     @RequestMapping(value="/json/date/{start}/{end}", method=RequestMethod.GET , produces = "application/json")
     public ResponseEntity<List<Combi_worknet_navernews>> json_findByDate (@PathVariable int start, @PathVariable int end){
         //날짜검색 미완성상태
-        List<Combi_worknet_navernews> cwnList = new ArrayList<>();
+        List<Combi_worknet_navernews> cwnList = combine_worknet_news_service.combineWorknetNewsByDate(start,end);
         if(cwnList == null){
             return new ResponseEntity<List<Combi_worknet_navernews>>(HttpStatus.NOT_FOUND);
         }
@@ -84,7 +85,7 @@ public class APIController {
     //pramMap -> startDate , endDate , name, type 받을 수 있음.
     @Transactional
     @RequestMapping(value="/json/job" , method=RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<Combi_worknet_navernews>> json_totalSearch (@RequestParam HashMap<String, Object> pramMap){
+    public ResponseEntity<List<Combi_worknet_navernews>> json_totalSearch (@RequestParam HashMap<Object, Object> pramMap){
         List<Combi_worknet_navernews> cwnList = combine_worknet_news_service.combineWorknetNewsByMap(pramMap);
         if(cwnList == null) {
             return new ResponseEntity<List<Combi_worknet_navernews>>(HttpStatus.NOT_FOUND);
