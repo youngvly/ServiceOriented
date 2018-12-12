@@ -2,6 +2,7 @@ package koreatech.cse.controller;
 
 import koreatech.cse.domain.combi.Combi_job_news;
 import koreatech.cse.domain.combi.Combi_worknet_navernews;
+import koreatech.cse.domain.combi.List_cwn;
 import koreatech.cse.repository.JobMapper;
 import koreatech.cse.repository.NewsMapper;
 import koreatech.cse.service.Combi.Combine_worknet_News_Service;
@@ -38,12 +39,12 @@ public class APIController {
     //all
     @Transactional
     @RequestMapping(value="/json/job/employList" ,method= RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<Combi_worknet_navernews>> json_getAll (){
-        List<Combi_worknet_navernews> cwnList = combine_worknet_news_service.getAllCombi();
+    public ResponseEntity<List_cwn> json_getAll (){
+        List_cwn cwnList = combine_worknet_news_service.getAllCombi();
         if (cwnList == null){
-            return new ResponseEntity<List<Combi_worknet_navernews>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List_cwn>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<List<Combi_worknet_navernews>>(cwnList,HttpStatus.OK);
+        return new ResponseEntity<List_cwn>(cwnList,HttpStatus.OK);
     }
     //직업명 검색
     @Transactional
@@ -58,35 +59,35 @@ public class APIController {
     //타입검색 (정규직..)
     @Transactional
     @RequestMapping(value="/json/jobtype/{jobtype}" ,method= RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<Combi_worknet_navernews>> json_findByType (@PathVariable  String jobtype){
-        List<Combi_worknet_navernews> cwnList = combine_worknet_news_service.combineWorknetNewsByJobType(jobtype);
+    public ResponseEntity<List_cwn> json_findByType (@PathVariable  String jobtype){
+        List_cwn cwnList = combine_worknet_news_service.combineWorknetNewsByJobType(jobtype);
         if (cwnList == null){
-            return new ResponseEntity<List<Combi_worknet_navernews>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List_cwn>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<List<Combi_worknet_navernews>>(cwnList,HttpStatus.OK);
+        return new ResponseEntity<List_cwn>(cwnList,HttpStatus.OK);
     }
     //날짜검색
     @Transactional
     @RequestMapping(value="/json/date/{start}/{end}", method=RequestMethod.GET , produces = "application/json")
-    public ResponseEntity<List<Combi_worknet_navernews>> json_findByDate (@PathVariable int start, @PathVariable int end){
+    public ResponseEntity<List_cwn> json_findByDate (@PathVariable int start, @PathVariable int end){
         //날짜검색 미완성상태
-        List<Combi_worknet_navernews> cwnList = combine_worknet_news_service.combineWorknetNewsByDate(start,end);
+        List_cwn cwnList = combine_worknet_news_service.combineWorknetNewsByDate(start,end);
         if(cwnList == null){
-            return new ResponseEntity<List<Combi_worknet_navernews>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List_cwn>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<List<Combi_worknet_navernews>>(cwnList,HttpStatus.OK);
+        return new ResponseEntity<List_cwn>(cwnList,HttpStatus.OK);
     }
 
     //진짜 get 방식으로 가져오는 api
     //pramMap -> startDate , endDate , name, type 받을 수 있음.
     @Transactional
     @RequestMapping(value="/json/job" , method=RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<Combi_worknet_navernews>> json_totalSearch (@RequestParam HashMap<Object, Object> pramMap){
-        List<Combi_worknet_navernews> cwnList = combine_worknet_news_service.combineWorknetNewsByMap(pramMap);
+    public ResponseEntity<List_cwn> json_totalSearch (@RequestParam HashMap<Object, Object> pramMap){
+        List_cwn cwnList = combine_worknet_news_service.combineWorknetNewsByMap(pramMap);
         if(cwnList == null) {
-            return new ResponseEntity<List<Combi_worknet_navernews>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List_cwn>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<List<Combi_worknet_navernews>>(cwnList,HttpStatus.OK);
+        return new ResponseEntity<List_cwn>(cwnList,HttpStatus.OK);
     }
 }

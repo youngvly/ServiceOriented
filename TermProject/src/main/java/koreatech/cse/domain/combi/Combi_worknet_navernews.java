@@ -6,22 +6,22 @@ import koreatech.cse.domain.worknet.WorkNetSearchable;
 import java.util.List;
 
 public class Combi_worknet_navernews {
-    private List<WorkNetSearchable> workNetItemList;
-    private List<NewsItems> newsItemsList;
+    private List<WorkNetSearchable> employList;
+    private List<NewsItems> newsList;
 
-    public List<WorkNetSearchable> getWorkNetItemList() {
-        return workNetItemList;
+    public List<WorkNetSearchable> getEmployList() {
+        return employList;
     }
 
-    public void setWorkNetItemList(List<WorkNetSearchable> workNetItemList) {
-        this.workNetItemList = workNetItemList;
+    public void setEmployList(List<WorkNetSearchable> employList) {
+        this.employList = employList;
     }
 
-    public List<NewsItems> getNewsItemsList() {
-        return newsItemsList;
+    public List<NewsItems> getNewsList() {
+        return newsList;
     }
 
-    public void setNewsItemsList(List<NewsItems> newsItemsList) {
-        this.newsItemsList = newsItemsList;
+    public void setNewsList(List<NewsItems> newsList) {
+        this.newsList = newsList;
     }
 }
