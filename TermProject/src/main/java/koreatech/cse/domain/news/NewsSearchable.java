@@ -7,7 +7,6 @@ public class NewsSearchable {
     private String naverLink;
     private String originalLink;
     private int newsid = -1;
-    private int jobid = -1;
     private String orderParam;
     private String jobname;
 
@@ -59,11 +58,4 @@ public class NewsSearchable {
         this.newsid = newsid;
     }
 
-    public int getJobid() {
-        return jobid;
-    }
-
-    public void setJobid(int jobid) {
-        this.jobid = jobid;
-    }
 }

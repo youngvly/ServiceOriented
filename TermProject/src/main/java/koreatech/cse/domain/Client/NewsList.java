@@ -1,5 +1,4 @@
-
-package koreatech.cse.domain.news;
+package koreatech.cse.domain.Client;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,48 +11,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "title",
-    "originallink",
-    "link",
-    "description",
-    "pubDate"
+        "title",
+        "originallink",
+        "description",
+        "pubDate",
+        "newsid",
+        "jobname"
 })
-public class NewsItems {
-
-
-
-    private int newsid;
-    private String jobname;
-
+public class NewsList {
 
     @JsonProperty("title")
     private String title;
     @JsonProperty("originallink")
     private String originallink;
-    @JsonProperty("link")
-    private String link;
     @JsonProperty("description")
     private String description;
     @JsonProperty("pubDate")
     private String pubDate;
+    @JsonProperty("newsid")
+    private Integer newsid;
+    @JsonProperty("jobname")
+    private String jobname;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    public String getJobname() {
-        return jobname;
-    }
-
-    public void setJobname(String jobname) {
-        this.jobname = jobname;
-    }
-
-    public int getNewsid() {
-        return newsid;
-    }
-
-    public void setNewsid(int newsid) {
-        this.newsid = newsid;
-    }
 
     @JsonProperty("title")
     public String getTitle() {
@@ -73,16 +53,6 @@ public class NewsItems {
     @JsonProperty("originallink")
     public void setOriginallink(String originallink) {
         this.originallink = originallink;
-    }
-
-    @JsonProperty("link")
-    public String getLink() {
-        return link;
-    }
-
-    @JsonProperty("link")
-    public void setLink(String link) {
-        this.link = link;
     }
 
     @JsonProperty("description")
@@ -105,6 +75,26 @@ public class NewsItems {
         this.pubDate = pubDate;
     }
 
+    @JsonProperty("newsid")
+    public Integer getNewsid() {
+        return newsid;
+    }
+
+    @JsonProperty("newsid")
+    public void setNewsid(Integer newsid) {
+        this.newsid = newsid;
+    }
+
+    @JsonProperty("jobname")
+    public String getJobname() {
+        return jobname;
+    }
+
+    @JsonProperty("jobname")
+    public void setJobname(String jobname) {
+        this.jobname = jobname;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -115,4 +105,16 @@ public class NewsItems {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "NewsList{" +
+                "title='" + title + '\'' +
+                ", originallink='" + originallink + '\'' +
+                ", description='" + description + '\'' +
+                ", pubDate='" + pubDate + '\'' +
+                ", newsid=" + newsid +
+                ", jobname='" + jobname + '\'' +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

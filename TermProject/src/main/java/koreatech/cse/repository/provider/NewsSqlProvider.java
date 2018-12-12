@@ -17,13 +17,6 @@ public class NewsSqlProvider {
                         WHERE("NEWSID = #{newsid}");
                     }
                 }
-                else if(searchable.getJobid() >0) {
-                    WHERE("JOBID= #{jobid}");
-                    if(searchable.getNewsid() >0) {
-                        OR();
-                        WHERE("NEWSID = #{newsid}");
-                    }
-                }
                 else if(searchable.getOriginalLink() != null) {
                     WHERE("ORIGINALLINK = #{originalLink}");
                 }

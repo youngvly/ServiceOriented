@@ -1,7 +1,8 @@
+package koreatech.cse.domain.Client;
 
-package koreatech.cse.domain.oauth2.facebook;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -12,23 +13,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "total_count"
+        "result"
 })
-public class Summary {
+public class ClientPOJO {
 
-    @JsonProperty("total_count")
-    private Integer totalCount;
+    @JsonProperty("result")
+    private List<Result> result = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("total_count")
-    public Integer getTotalCount() {
-        return totalCount;
+    @JsonProperty("result")
+    public List<Result> getResult() {
+        return result;
     }
 
-    @JsonProperty("total_count")
-    public void setTotalCount(Integer totalCount) {
-        this.totalCount = totalCount;
+    @JsonProperty("result")
+    public void setResult(List<Result> result) {
+        this.result = result;
     }
 
     @JsonAnyGetter
@@ -41,4 +42,11 @@ public class Summary {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "ClientPOJO{" +
+                "result=" + result +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
 }

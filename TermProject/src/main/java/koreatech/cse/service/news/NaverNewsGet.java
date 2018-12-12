@@ -46,14 +46,7 @@ public class NaverNewsGet {
     private NewsService newsService;
 
 //    @PreAuthorize("hasRole('ROLE_ADMIN')")
-//    @RequestMapping("/getandinsert/{query}")
-    public String getNewsByQuery(@PathVariable  String query){
-
-//        System.out.println(query);
-//        Job job = jobMapper.findByJobName(query);
-//        if (job == null) {
-//            jobMapper.insert(query);
-//        }
+    public String getNewsByQuery(String query){
 
         RestTemplate restTemplate = new RestTemplate();
         try {
