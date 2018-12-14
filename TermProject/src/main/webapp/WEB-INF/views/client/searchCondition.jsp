@@ -1,4 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,8 +62,8 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="page-heading">
-              <h1>About Me</h1>
-              <span class="subheading">This is what I do.</span>
+              <h1>조건별 검색</h1>
+              <span class="subheading">회사명,유형,모집시작일, 모집마감일 별 검색이 가능합니다.</span>
             </div>
           </div>
         </div>
@@ -71,10 +73,69 @@
     <!-- Main Content -->
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+        <div class="col-lg-12 col-md-12 mx-auto">
+
+
+            <form:form  method="post">
+              <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input class="form-control" name="name" id="name" placeholder="회사명"/>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="type">Type</label>
+                    <input  name="type" id="type" class="form-control" placeholder="타입"/>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-md-4">
+                    <label for="startdate">StartDate</label>
+                    <input type="date" name="startDate" id="startdate" class="form-control"/>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="enddate">EndDate</label>
+                    <input type="date" name="endDate" id="enddate" class="form-control"/>
+                </div>
+                  <div class="form-group  col-md-4">
+                    <label for="submitButton"></label>
+                    <input type="submit" value="검색" id = "submitButton" class="btn btn-dark btn-block">
+                  </div>
+              </div>
+            </form:form>
+
+          <c:choose>
+
+          <c:when test="${Result ne null}">
+            <c:forEach var="result" items="${Result}">
+              <hr/>
+              <c:forEach var="job" items="${result.employList}">
+                <p>${job.name}<br/>
+                ${job.title}</p>
+              </c:forEach>
+              <hr/>
+              <c:forEach var="news" items="${result.newsList}">
+                <p>${news.title}<br/>
+                ${news.description}</p>
+              </c:forEach>
+              <hr/>
+            </c:forEach>
+
+          </c:when>
+            <c:when test="${Result eq null}">
+              not found
+            </c:when>
+          </c:choose>
+
+
+
+
+
+          <c:if test="${status  eq null}">
+            <p>${status}</p>
+          </c:if>
+          <%--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>--%>
+          <%--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>--%>
+          <%--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>--%>
         </div>
       </div>
     </div>

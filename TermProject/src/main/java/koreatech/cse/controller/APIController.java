@@ -50,7 +50,7 @@ public class APIController {
     @Transactional
     @RequestMapping(value="/json/jobname/{jobname}" ,method= RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Combi_worknet_navernews> json_findByName (@PathVariable  String jobname){
-        Combi_worknet_navernews cwn = combine_worknet_news_service.combineWorknetNewsByJobName(jobname);
+        Combi_worknet_navernews cwn = combine_worknet_news_service.combineWorknetNewsBySimmilarJobName(jobname);
         if (cwn == null){
             return new ResponseEntity<Combi_worknet_navernews>(HttpStatus.NOT_FOUND);
         }
