@@ -1,0 +1,109 @@
+├─java
+│  └─koreatech
+│      └─cse
+│          ├─controller
+│          │  │  APIController.java			: API제공 컨트롤러 "/api"
+│          │  │  HomeController.java		: 사이트 접속시 웹페이지를 연결해주는 컨트롤러 ""
+│          │  │  KakaoController.java		: 카카오 로그인을 위한 컨트롤러
+│          │  │  UserController.java			: 로그인을 위한 유저컨트롤러
+│          │  │
+│          │  └─oauth2
+│          │          KakaoOauth2Controller.java
+│          │
+│          ├─domain
+│          │  │  Authority.java
+│          │  │  Searchable.java
+│          │  │  User.java
+│          │  │
+│          │  ├─Client				: 클라이언트 입장에서 API를 받아올때 필요한 POJO
+│          │  │      ClientPOJO.java			: Result[]를 가지고있는 가장 큰 클래스
+│          │  │      EmployList.java			: 고용정보를 가지고있는 클래스
+│          │  │      NewsList.java			: 회사별 뉴스를 가지고있는 클래스
+│          │  │      Result.java			: EmployList와 NewsList를 가지고있는 클래스. 이것이 없으면 json으로 보내질때 시작부터 배열형식으로 보내지기때문에 완벽한 json형식이라 할 수 없음.
+│          │  │
+│          │  ├─combi
+│          │  │      Combi_job_news.java		: 뉴스와 직업리스트를 엮어주는 DTO
+│          │  │      Combi_worknet_navernews.java	: 뉴스와 고용정보를 엮어주는 DTO
+│          │  │      List_cwn.java			: Combi_worknet_navernews를 리스트형식으로 가지고있는 DTO -> 클라이언트 입장에서 "Result"클래스로 받기 위함
+│          │  │
+│          │  ├─job				: 고용회사명 DTO
+│          │  │      Job.java
+│          │  │
+│          │  ├─news				: 네이버 뉴스API를 받아오기위한 DTO
+│          │  │      News.java			
+│          │  │      NewsItems.java
+│          │  │      NewsSearchable.java		: DB에서 검색을 위함
+│          │  │
+│          │  ├─oauth2
+│          │  │  └─kakao
+│          │  │       KakaoAccount.java
+│          │  │       KakaoProfile.java
+│          │  │       Properties.java
+│          │  │
+│          │  └─worknet				: 워크넷에서 고용정보 API를 받아오기위한 DTO
+│          │          WorkNetItem.java
+│          │          WorkNetSearchable.java		: DB검색을 위함
+│          │
+│          ├─repository				: DB검색을 도와줄 Mapper클래스
+│          │  │  AuthorityMapper.java
+│          │  │  JobMapper.java
+│          │  │  NewsMapper.java
+│          │  │  UserMapper.java
+│          │  │  WorknetMapper.java
+│          │  │
+│          │  └─provider				:동적 SQL문 작성을 위한 Provider
+│          │          NewsSqlProvider.java
+│          │          UserSqlProvider.java
+│          │          WorknetSqlProvider.java
+│          │
+│          ├─service					: 제공되는 서비스		
+│          │  │  UserService.java				: 유저 회원가입을 위한 서비스
+│          │  │
+│          │  ├─client
+│          │  │      GetApiService.java			: API활용 예제 중 API를 받아오는 서비스
+│          │  │
+│          │  ├─Combi
+│          │  │      Combine_worknet_News_Service.java	: 워크넷DB와 뉴스DB에서 각각 검색해서 Combi_worknet_navernews List 결과로 return하는 서비스
+│          │  │
+│          │  ├─news
+│          │  │      NaverNewsGet.java			: 네이버 뉴스 API를 가져오는 클래스
+│          │  │      NewsService.java			: 네이버 뉴스를 DB에 삽입시에 오래된 지난 DB내용은 삭제해주는 서비스
+│          │  │
+│          │  └─worknet
+│          │          WorknetService.java			: 워크넷 고용정보 를 DB에 삽입하는 클래스
+│          │
+│          └─thread					: 기타 서버 관리를 위한 Beans
+│                  LogControl.java				: 서버자체 로그 작성을 위한 클래스 (테스트용, 현재 미사용)
+│                  TimerAutoJob.java				: 워크넷 고용정보 API를 가져오는 클래스
+│                  TimerAutoNews.java			: 워크넷 DB에 있는 회사명을 기반으로 네이버 뉴스 API를 받아오는 클래스
+│
+├─resources
+  ├─common
+  │      log4j2.xml			: 서버자체 로그파일 작성을 위한 빈즈
+  │      mybatis.xml
+  │      security.xml			: Spring Sercurity 빈즈
+  │      services.xml			: 각종 서비스 등록
+  │      timer.xml			: 시간마다 API를 자동으로 받아오기위한 빈즈, scheduler 이용
+  │
+  ├─dev
+  │      config.properties			: 각종 민감한 정보들이 담겨있음.
+  │
+  ├─logs
+  └─prod
+          config.properties			: 각종 민감한 정보들이 담겨있음.
+
+
+
+└─webapp
+    └─WEB-INF
+        │  dispatcher-servlet.xml		: 서블릿 빈즈
+        │  web.xml				: spring 설정
+        │
+        ├─resources			: WEB을 구성하는 각종 자원들
+        │  
+        └─views				: WEB을 구성하는 메인 페이지
+            └─client			: 클라이언트 입장에서 보는 API예시 페이지
+                    apiAbout.jsp		: 본 프로젝트 소개
+                    index.jsp			: 메인 페이지
+                    searchCondition.jsp		: 조건검색 예시 페이지
+                    searchJobname.jsp		: 직업명 검색 페이지
