@@ -13,7 +13,7 @@
 
     <title>Clean Blog - Start Bootstrap Theme</title>
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS --호>
     <link rel="stylesheet" type="text/css" href="/resources/vendor/bootstrap/css/bootstrap.css">
 
     <!-- Custom fonts for this template -->
