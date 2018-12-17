@@ -31,22 +31,18 @@ public class HomeController {
         return "searchCondition";
     }
 
+    @RequestMapping(value="/api/about", method = RequestMethod.GET)
+    public String apiSearch(Model model) {
+        return "apiAbout";
+    }
+
     @RequestMapping(value = "/search/condition" ,method = RequestMethod.POST)
     public String conditionSearched(Model model,
                                     @RequestParam Map<String,String> pramMap)
     {
-
-        //api이용해서 찾아오기
         ClientPOJO clientPOJO = getApiService.getApi(pramMap);
-//        if (clientPOJO != null){
-//            int num = 1;
-            model.addAttribute("Result" , clientPOJO.getResult());
-//        }
+        model.addAttribute("Result" , clientPOJO.getResult());
         return "searchCondition";
     }
-
-
-    @RequestMapping("/search/jobname")
-    public String jobnameSearch() {return "searchJobname";}
 }
 
