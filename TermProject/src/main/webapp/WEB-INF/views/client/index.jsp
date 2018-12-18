@@ -30,7 +30,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href= "/">채용정보 API</a>
+        <a class="navbar-brand" href= "/main">채용정보 API</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link" href="/main">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/api/about">API</a>
@@ -80,14 +80,13 @@
 
               <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                 <div class="card h-30">
-                  <a href="#"><img class="card-img-top" src="http://www.work.go.kr/framework/filedownload/getImage.do?filePathName=KuBCC2IodBkj%2Frlv8XuRigf%2BhZ%2FRhjL7KkBHfjLL73nt2%2FXXzEuIy9t46a1%2FKfOD7suWeZYPwv8GKFqD7PXO%2Fg%3D%3D" alt=""></a>
+                  <a href="#"><img class="card-img-top" src="http://www.work.go.kr/framework/filedownload/getImage.do?filePathName=KuBCC2IodBkj%2Frlv8XuRin77AGUc9RpFH0vs9WJg9hWW08BVEbLYX9Lgdmm7FNNq7suWeZYPwv8GKFqD7PXO%2Fg%3D%3D" alt=""></a>
                   <div class="card-body">
                     <h6 class="card-title">
-                      <a href="#">티엠씨</a>
+                      <a href="#">부방</a>
                     </h6>
                     <a href="#"></a>
-                    경영관리팀(총무업무) 신입사원 채용공고 경영관리팀(총무업무) 신입사원 채용공고
-                    <p></p>
+                    경영기획 경력사원 모집                    <p></p>
                     <div class="clearfix">
                       <a class="btn btn-primary float-right" href="#">지원하기 &rarr;</a>
                     </div>
@@ -97,13 +96,13 @@
 
               <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                 <div class="card h-30">
-                  <a href="#"><img class="card-img-top" src="http://www.work.go.kr/framework/filedownload/getImage.do?filePathName=KuBCC2IodBkj%2Frlv8XuRigf%2BhZ%2FRhjL7KkBHfjLL73nt2%2FXXzEuIy9t46a1%2FKfOD7suWeZYPwv8GKFqD7PXO%2Fg%3D%3D" alt=""></a>
+                  <a href="#"><img class="card-img-top" src="http://www.work.go.kr/framework/filedownload/getImage.do?filePathName=ZGI9%2BubbEcHpFsdRT26HvPPZGr15HO6aptcGucKt1t6opiSJ7T7phZ9ydKq0%2FkvB" alt=""></a>
                   <div class="card-body">
                     <h6 class="card-title">
-                      <a href="#">티엠씨</a>
+                      <a href="#">한국전력공사</a>
                     </h6>
                     <a href="#"></a>
-                    경영관리팀(총무업무) 신입사원 채용공고 경영관리팀(총무업무) 신입사원 채용공고
+                    2019년도 1차 배전담당(갑) 채용형 인턴 모집
                     <p></p>
                     <div class="clearfix">
                       <a class="btn btn-primary float-right" href="#">지원하기 &rarr;</a>
@@ -113,13 +112,13 @@
               </div>
               <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                 <div class="card h-30">
-                  <a href="#"><img class="card-img-top" src="http://www.work.go.kr/framework/filedownload/getImage.do?filePathName=KuBCC2IodBkj%2Frlv8XuRigf%2BhZ%2FRhjL7KkBHfjLL73nt2%2FXXzEuIy9t46a1%2FKfOD7suWeZYPwv8GKFqD7PXO%2Fg%3D%3D" alt=""></a>
+                  <a href="#"><img class="card-img-top" src="http://www.work.go.kr/framework/filedownload/getImage.do?filePathName=KuBCC2IodBkj%2Frlv8XuRikqBnvDKA7hH%2B1dGR79gHXLAXVrGV4BWqN2kb4zeC9d97suWeZYPwv8GKFqD7PXO%2Fg%3D%3D" alt=""></a>
                   <div class="card-body">
                     <h6 class="card-title">
-                      <a href="#">티엠씨</a>
+                      <a href="#">서울주택도시공사</a>
                     </h6>
                     <a href="#"></a>
-                    경영관리팀(총무업무) 신입사원 채용공고 경영관리팀(총무업무) 신입사원 채용공고
+                    임대공급관리원 채용공고
                     <p></p>
                     <div class="clearfix">
                       <a class="btn btn-primary float-right" href="#">지원하기 &rarr;</a>
@@ -129,13 +128,13 @@
               </div>
               <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                 <div class="card h-30">
-                  <a href="#"><img class="card-img-top" src="http://www.work.go.kr/framework/filedownload/getImage.do?filePathName=KuBCC2IodBkj%2Frlv8XuRigf%2BhZ%2FRhjL7KkBHfjLL73nt2%2FXXzEuIy9t46a1%2FKfOD7suWeZYPwv8GKFqD7PXO%2Fg%3D%3D" alt=""></a>
+                  <a href="#"><img class="card-img-top" src="http://www.work.go.kr/framework/filedownload/getImage.do?filePathName=KuBCC2IodBkj%2Frlv8XuRimmh%2FLAzH0y%2FMc91Hqop5m6QHLNNIHN%2BWOKs%2BxlTXrXu7suWeZYPwv8GKFqD7PXO%2Fg%3D%3D" alt=""></a>
                   <div class="card-body">
                     <h6 class="card-title">
-                      <a href="#">티엠씨</a>
+                      <a href="#">미래신용정보</a>
                     </h6>
                     <a href="#"></a>
-                    경영관리팀(총무업무) 신입사원 채용공고 경영관리팀(총무업무) 신입사원 채용공고
+                    2019년 대졸 신입•경력 사원 공채
                     <p></p>
                     <div class="clearfix">
                       <a class="btn btn-primary float-right" href="#">지원하기 &rarr;</a>

@@ -7,7 +7,7 @@
 
     <sec:global-method-security secured-annotations="enabled" pre-post-annotations="enabled" />
     <sec:http use-expressions="true">
-        <sec:form-login login-page="/user/signin"
+        <sec:form-login login-page="/main"
                         default-target-url="/user/signinSuccess"
                         username-parameter="j_username"
                         password-parameter="j_password"

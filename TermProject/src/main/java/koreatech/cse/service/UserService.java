@@ -100,7 +100,7 @@ public class UserService implements UserDetailsService {
         HttpSession session = request.getSession(true);
         session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 
-        return "redirect:/";
+        return "/index";
     }
 
     public HashMap<Integer, AccessGrant> getKakaoAccessTokenMap() {

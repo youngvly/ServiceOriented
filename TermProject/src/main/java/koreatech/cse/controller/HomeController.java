@@ -2,6 +2,7 @@ package koreatech.cse.controller;
 
 import koreatech.cse.domain.Client.ClientPOJO;
 import koreatech.cse.domain.Client.Result;
+import koreatech.cse.domain.User;
 import koreatech.cse.domain.worknet.WorkNetSearchable;
 import koreatech.cse.service.client.GetApiService;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,13 @@ public class HomeController {
 
 
     @RequestMapping
-    public String home() {
+    public String home(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "login";
+    }
+    @RequestMapping("/main")
+    public String main(Model model) {
         return "index";
     }
 
